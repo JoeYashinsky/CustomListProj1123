@@ -5,7 +5,7 @@ using CustomListClass;
 namespace CustomListUnitTests
 {
     [TestClass]
-    public class CustomListUnitTest
+    public class CustomListAddTest
     {
         [TestMethod]
         public void Add_PositiveNumber_CountOfOne()
@@ -105,7 +105,7 @@ namespace CustomListUnitTests
         }
 
         [TestMethod]
-        public void Add_FourNumbers_CheckTwoIndex()
+        public void Add_FourNumbers_TwoIndexValueSix()
         {
             //Arrange
             CustomList<int> numberList = new CustomList<int>();
