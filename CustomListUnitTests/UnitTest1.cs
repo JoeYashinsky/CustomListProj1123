@@ -76,7 +76,7 @@ namespace CustomListUnitTests
         }
 
         [TestMethod]
-        public void Add_SixPositiveNumbers_CapacityEight()
+        public void Add_SixPositiveNumbers_CapacitySix()
         {
             //Arrange
             CustomList<int> numberList = new CustomList<int>();
@@ -87,7 +87,7 @@ namespace CustomListUnitTests
             int fifthNumber = 9;
             int sixthNumber = 11;
 
-            int expected = 8;
+            int expected = 6;
             int actual;
 
             //Act
@@ -105,7 +105,7 @@ namespace CustomListUnitTests
         }
 
         [TestMethod]
-        public void Add_3Numbers_CheckTwoIndex()
+        public void Add_FourNumbers_CheckTwoIndex()
         {
             //Arrange
             CustomList<int> numberList = new CustomList<int>();
@@ -131,6 +131,7 @@ namespace CustomListUnitTests
         }
     }
 }
+
 
 
 //public void Add_PostiveInteger_CountOfOne()

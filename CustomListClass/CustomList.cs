@@ -8,7 +8,22 @@ namespace CustomListClass
 {
     public class CustomList<T>
     {
-        
+        T[] _items;
+        public int Count;
+        public int Capacity;
+
+        public CustomList()
+        {
+            Count = 0;
+            Capacity = 6;
+            _items = new T[Capacity];
+        }
+
+        public void Add(T valueToAdd)
+        {
+            _items[Count] = valueToAdd;
+            Count++;
+        }
 
       
 
