@@ -8,7 +8,7 @@ namespace CustomListUnitTests
     public class CustomListUnitTest
     {
         [TestMethod]
-        public void Add_PositiveNumber_CountOf1()
+        public void Add_PositiveNumber_CountOfOne()
         {
             //Arrange
             CustomList<int> numberList = new CustomList<int>();
@@ -24,7 +24,8 @@ namespace CustomListUnitTests
             Assert.AreEqual(expected, actual);
         }
 
-        public void Add_ListOfStrings_CountOf3()
+        [TestMethod]
+        public void Add_ListOfStrings_CountOfThree()
         {
             //Arrange
             CustomList<string> listOfStrings = new CustomList<string>();
@@ -39,13 +40,15 @@ namespace CustomListUnitTests
             listOfStrings.Add(firstString);
             listOfStrings.Add(secondString);
             listOfStrings.Add(thirdString);
+            
             actual = listOfStrings.Count;
 
             //Assert
             Assert.AreEqual(expected, actual);
         }
 
-        public void Add_Negative_Numbers_CountOf5()
+        [TestMethod]
+        public void Add_Negative_Numbers_CountOfFive()
         {
             //Arrange
             CustomList<int> numberList = new CustomList<int>();
@@ -54,6 +57,7 @@ namespace CustomListUnitTests
             int thirdNumber = -6;
             int fourthNumber = -8;
             int fifthNumber = -10;
+            
             int expected = 5;
             int actual;
 
@@ -65,6 +69,61 @@ namespace CustomListUnitTests
             numberList.Add(fifthNumber);
             
             actual = numberList.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+
+        }
+
+        [TestMethod]
+        public void Add_SixPositiveNumbers_CapacityEight()
+        {
+            //Arrange
+            CustomList<int> numberList = new CustomList<int>();
+            int firstNumber = 1;
+            int secondNumber = 3;
+            int thirdNumber = 5;
+            int fourthNumber = 7;
+            int fifthNumber = 9;
+            int sixthNumber = 11;
+
+            int expected = 8;
+            int actual;
+
+            //Act
+            numberList.Add(firstNumber);
+            numberList.Add(secondNumber);
+            numberList.Add(thirdNumber);
+            numberList.Add(fourthNumber);
+            numberList.Add(fifthNumber);
+            numberList.Add(sixthNumber);
+            
+            actual = numberList.Capacity;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Add_3Numbers_CheckTwoIndex()
+        {
+            //Arrange
+            CustomList<int> numberList = new CustomList<int>();
+            int firstNumber = 4;
+            int secondNumber = 5;
+            int thirdNumber = 6;
+            int fourthNumber = 7;
+
+            int expected = 6;
+            int actual;
+
+            //Act
+            numberList.Add(firstNumber);
+            numberList.Add(secondNumber);
+            numberList.Add(thirdNumber);
+            numberList.Add(fourthNumber);
+
+            actual = numberList[2];
 
             //Assert
             Assert.AreEqual(expected, actual);
