@@ -8,7 +8,7 @@ namespace CustomListUnitTests
     public class CustomListUnitTest
     {
         [TestMethod]
-        public void Add_PositiveInteger_CountOf1()
+        public void Add_PositiveNumber_CountOf1()
         {
             //Arrange
             CustomList<int> numberList = new CustomList<int>();
@@ -22,11 +22,57 @@ namespace CustomListUnitTests
 
             //Assert
             Assert.AreEqual(expected, actual);
+        }
 
+        public void Add_ListOfStrings_CountOf3()
+        {
+            //Arrange
+            CustomList<string> listOfStrings = new CustomList<string>();
+            string firstString = "Tinker";
+            string secondString = "Evers";
+            string thirdString = "Chance";
+
+            int expected = 3;
+            int actual;
+
+            //Act
+            listOfStrings.Add(firstString);
+            listOfStrings.Add(secondString);
+            listOfStrings.Add(thirdString);
+            actual = listOfStrings.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        public void Add_Negative_Numbers_CountOf5()
+        {
+            //Arrange
+            CustomList<int> numberList = new CustomList<int>();
+            int firstNumber = -2;
+            int secondNumber = -4;
+            int thirdNumber = -6;
+            int fourthNumber = -8;
+            int fifthNumber = -10;
+            int expected = 5;
+            int actual;
+
+            //Act
+            numberList.Add(firstNumber);
+            numberList.Add(secondNumber);
+            numberList.Add(thirdNumber);
+            numberList.Add(fourthNumber);
+            numberList.Add(fifthNumber);
+            
+            actual = numberList.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
 
         }
     }
 }
+
 
 //public void Add_PostiveInteger_CountOfOne()
 //{
