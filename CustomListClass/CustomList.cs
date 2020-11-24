@@ -8,9 +8,9 @@ namespace CustomListClass
 {
     public class CustomList<T>
     {                           
-        private T[] _items;
-        private int Count;
-        private int Capacity;
+        private T[] _items;             //Should these be made private? But then our test class would not be accessing them properly?
+        public int Count;
+        public int Capacity;
         
         
         public int count                //As a developer, I want a 'read-only' Count property implemented on the custom-built list class
@@ -48,8 +48,16 @@ namespace CustomListClass
 
         public void Add(T valueToAdd)
         {
-            _items[Count] = valueToAdd;
-            Count++;
+            if (count < capacity)
+            {
+                _items[Count] = valueToAdd;
+                Count++;
+            }
+            else if(count == capacity)
+            {
+                capacity += capacity;
+                count++;
+            }
         }
 
         public void Remove(T valueToAdd)
