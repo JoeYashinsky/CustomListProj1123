@@ -184,7 +184,7 @@ namespace CustomListUnitTests
         }
 
         [TestMethod]
-        public void Remove_TwoStrings_CountTwo()
+        public void Remove_ListOfStrings_CountTwo()
         {
             //Arrange
             CustomList<string> listOfStrings = new CustomList<string>();
@@ -203,6 +203,33 @@ namespace CustomListUnitTests
             listOfStrings.Remove(thirdString);
             listOfStrings.Remove(fourthString);
             actual = listOfStrings.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Remove_ListOfBools_CountThree()
+        {
+            //Arrange
+            CustomList<bool> bools = new CustomList<bool>();
+            bool bool1 = true;
+            bool bool2 = false;
+            bool bool3 = true;
+            bool bool4 = false;
+            bool bool5 = true;
+            int expected = 3;
+            int actual;
+
+            //Act
+            bools.Add(bool1);
+            bools.Add(bool2);
+            bools.Add(bool3);
+            bools.Add(bool4);
+            bools.Add(bool5);
+            bools.Remove(bool2);
+            bools.Remove(bool4);
+            actual = bools.Count;
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -287,12 +314,38 @@ namespace CustomListUnitTests
             actual = listResult.Count;          //Should read:  1, 3, 5, 2, 4, 6
 
             //Assert
+            Assert.AreEqual(expected, actual); 
+        }
+
+        //ZIP Test   
+        [TestMethod]
+        public void Zip_TwoCustomLists_ZippedTogetherInFormOfZipper()
+        {
+            //Arrange
+            CustomList<int> listOne = new CustomList<int>();
+            CustomList<int> listTwo = new CustomList<int>();
+            CustomList<int> listResult = new CustomList<int>();
+            int firstNumber = 1;
+            int secondNumber = 3;
+            int thirdNumber = 5;
+            int fourthNumber = 2;
+            int fifthNumber = 4;
+            int sixthNumber = 6;
+            string expected = "1, 2, 3, 4, 5, 6";
+            string actual;
+
+            //Act
+            listOne.Add(firstNumber);
+            listOne.Add(secondNumber);
+            listOne.Add(thirdNumber);
+            listOne.Add(fourthNumber);
+            listOne.Add(fifthNumber);
+            listOne.Add(sixthNumber);
+            listResult = listResult.Zip(listOne, listTwo);
+            actual = listResult.ToString();
+
+            //Assert
             Assert.AreEqual(expected, actual);
-
-
-
-
-
 
         }
     }
