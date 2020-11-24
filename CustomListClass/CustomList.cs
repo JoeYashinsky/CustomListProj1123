@@ -12,15 +12,8 @@ namespace CustomListClass
         private int Count;
         private int Capacity;
         
-        public T this[int index]
-        {get
-            {
-                return Count;
-            }
-
-        }
-
-        public int Count                //As a developer, I want a 'read-only' Count property implemented on the custom-built list class
+        
+        public int count                //As a developer, I want a 'read-only' Count property implemented on the custom-built list class
         {
             get
             {
@@ -28,12 +21,21 @@ namespace CustomListClass
             }
         }
         
-        public int Capacity            //As a developer, I want a Capacity property implemented on the custom-built list class
+        public int capacity            //As a developer, I want a Capacity property implemented on the custom-built list class
         {
             get
             {
                 return Capacity;
             }
+        }
+
+        public T this[int index]
+        {
+            get
+            {
+                return Count;
+            }
+
         }
 
         public CustomList()
