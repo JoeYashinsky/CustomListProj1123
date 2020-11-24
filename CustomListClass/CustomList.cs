@@ -11,6 +11,15 @@ namespace CustomListClass
         T[] _items;
         public int Count;
         public int Capacity;
+        
+        public T this[int index]
+        {get
+            {
+                return Count;
+            }
+
+        }
+        
 
         public CustomList()
         {
@@ -23,6 +32,11 @@ namespace CustomListClass
         {
             _items[Count] = valueToAdd;
             Count++;
+        }
+        public void Remove(T valueToAdd)
+        {
+            _items[Count] = valueToAdd;
+            Count--;
         }
 
       
