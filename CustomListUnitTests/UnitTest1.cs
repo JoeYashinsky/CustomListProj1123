@@ -261,6 +261,31 @@ namespace CustomListUnitTests
             Assert.AreEqual(expected, actual);
         }
 
+        //OverrideToString test
+        [TestMethod]
+
+        public void ToString_ConvertContentsOfCustomListToString_SingleString()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            int firstNumber = 1;
+            int secondNumber = 2;
+            int thirdNumber = 7;
+            int fourthNumber = 8;
+            string expected = "1278";
+            string actual;
+
+            //Act
+            list.Add(firstNumber);
+            list.Add(secondNumber);
+            list.Add(thirdNumber);
+            list.Add(fourthNumber);
+            actual = list.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
         //INDEXER test
         [TestMethod]
         public void Add_OneInteger_ZeroIndexValue25()
@@ -330,69 +355,76 @@ namespace CustomListUnitTests
             Assert.AreEqual(expected, actual);
         }
 
-        //ADDLISTS test
+        ////OverloadPlusOperator test
+        //[TestMethod]
+        //public void AddOperator_TwoLists_FinalListHasCountSix()
+        //{
+        //    //Arrange
+        //    CustomList<int> listOne = new CustomList<int>() { };
+        //    CustomList<int> listTwo = new CustomList<int>() { };
+        //    CustomList<int> listResult = new CustomList<int>() { };
+        //    int firstNumber = 1;
+        //    int secondNumber = 3;
+        //    int thirdNumber = 5;
+        //    int fourthNumber = 2;
+        //    int fifthNumber = 4;
+        //    int sixthNumber = 6;
+        //    int expected = 6;
+        //    int actual;
+
+        //    //Act
+        //    listOne.Add(firstNumber);
+        //    listOne.Add(secondNumber);
+        //    listOne.Add(thirdNumber);
+        //    listTwo.Add(fourthNumber);
+        //    listTwo.Add(fifthNumber);
+        //    listTwo.Add(sixthNumber);
+
+        //    listResult = listOne + listTwo;
+        //    actual = listResult.Count;          //Should read:  1, 3, 5, 2, 4, 6
+
+        //    //Assert
+        //    Assert.AreEqual(expected, actual);
+        //}
+
+        //OverloadMinusOperator test
         [TestMethod]
-        public void AddLists_TwoLists_FinalListHasCountSix()
+        public void MinusOperator_TwoLists_FinalList()
         {
-            //Arrange
-            CustomList<int> listOne = new CustomList<int>();
-            CustomList<int> listTwo = new CustomList<int>();
-            CustomList<int> listResult = new CustomList<int>();
-            int firstNumber = 1;
-            int secondNumber = 3;
-            int thirdNumber = 5;
-            int fourthNumber = 2;
-            int fifthNumber = 4;
-            int sixthNumber = 6;
-            int expected = 6;
-            int actual;
 
-            //Act
-            listOne.Add(firstNumber);
-            listOne.Add(secondNumber);
-            listOne.Add(thirdNumber);
-            listTwo.Add(fourthNumber);
-            listTwo.Add(fifthNumber);
-            listTwo.Add(sixthNumber);
-
-            listResult.Count = listOne.Count + listTwo.Count;
-            actual = listResult.Count;          //Should read:  1, 3, 5, 2, 4, 6
-
-            //Assert
-            Assert.AreEqual(expected, actual); 
         }
 
         //ZIP Test   
-        [TestMethod]
-        public void Zip_TwoCustomLists_ZippedTogetherInFormOfZipper()
-        {
-            //Arrange
-            CustomList<int> listOne = new CustomList<int>();
-            CustomList<int> listTwo = new CustomList<int>();
-            CustomList<int> listResult = new CustomList<int>();
-            int firstNumber = 1;
-            int secondNumber = 3;
-            int thirdNumber = 5;
-            int fourthNumber = 2;
-            int fifthNumber = 4;
-            int sixthNumber = 6;
-            string expected = "1, 2, 3, 4, 5, 6";
-            string actual;
+        //[TestMethod]
+        //public void Zip_TwoCustomLists_ZippedTogetherInFormOfZipper()
+        //{
+        //    //Arrange
+        //    CustomList<int> listOne = new CustomList<int>();
+        //    CustomList<int> listTwo = new CustomList<int>();
+        //    CustomList<int> zipperedList = new CustomList<int>();
+        //    int firstNumber = 1;
+        //    int secondNumber = 3;
+        //    int thirdNumber = 5;
+        //    int fourthNumber = 2;
+        //    int fifthNumber = 4;
+        //    int sixthNumber = 6;
+        //    string expected = "1, 2, 3, 4, 5, 6";
+        //    string actual;
 
-            //Act
-            listOne.Add(firstNumber);
-            listOne.Add(secondNumber);
-            listOne.Add(thirdNumber);
-            listOne.Add(fourthNumber);
-            listOne.Add(fifthNumber);
-            listOne.Add(sixthNumber);
-            listResult = listResult.Zip(listOne, listTwo);
-            actual = listResult.ToString();
+        //    //Act
+        //    listOne.Add(firstNumber);
+        //    listOne.Add(secondNumber);
+        //    listOne.Add(thirdNumber);
+        //    listOne.Add(fourthNumber);
+        //    listOne.Add(fifthNumber);
+        //    listOne.Add(sixthNumber);
+        //    zipperedList = zipperedList.Zip(listOne, listTwo);
+        //    actual = zipperedList.ToString();
 
-            //Assert
-            Assert.AreEqual(expected, actual);
+        //    //Assert
+        //    Assert.AreEqual(expected, actual);
 
-        }
+        //}
     }
 }
 

@@ -8,7 +8,7 @@ namespace CustomListClass
 {
     public class CustomList<T>
     {                           
-        private T[] _items;             //Should these be made private? But then our test class would not be accessing them properly?
+        private T[] _items;             
         private int count;
         private int capacity;
         
@@ -33,18 +33,10 @@ namespace CustomListClass
         {
             get
             {
-                return Count;
+                return _items[index]; 
             }
 
         }
-
-        public CustomList()
-        {
-            count = 0;
-            capacity = 6;
-            _items = new T[Capacity];
-        }
-
 
         public void Add(T valueToAdd)
         {
@@ -60,13 +52,45 @@ namespace CustomListClass
             }
         }
 
+        //Want to locate and then remove the proper item. 
         public void Remove(T valueToRemove)
         {
             _items[Count] = valueToRemove;
             count--;
         }
 
-      
+        public CustomList()
+        {
+            count = 0;
+            capacity = 6;
+            _items = new T[Capacity];
+        }
+
+        public override string ToString()
+        {
+            string showCurrentList = "";
+            if (count > 0)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    showCurrentList += _items[i].ToString() + "";
+                }
+            }
+            return showCurrentList;
+
+        }
+
+        //public CustomList<T> Zip(CustomList<T> zipListOne, CustomList<T> zipListTwo)
+        //{
+        //    CustomList<T> zippedList = new CustomList<T>(zipListOne + zipListTwo);
+        //    for (int z = 0; z < ; z++)
+        //    {
+        //        zippedList.Add
+        //        }
+
+        //}
+
+
 
 
     }
