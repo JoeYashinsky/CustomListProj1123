@@ -90,7 +90,6 @@ namespace CustomListUnitTests
 
             //Assert
             Assert.AreEqual(expected, actual);
-
         }
 
         [TestMethod]
@@ -147,7 +146,34 @@ namespace CustomListUnitTests
         }
 
         [TestMethod]
-        public void Remove_PositiveAndNegativeInteger_CapacitySix()
+        public void Remove_TwoNegativeNumbers_CountThree()
+        {
+            //Arrange
+            CustomList<int> numberList = new CustomList<int>();
+            int firstNumber = -1;
+            int secondNumber = -3;
+            int thirdNumber = -5;
+            int fourthNumber = -7;
+            int fifthNumber = -9;
+            int expected = 3;
+            int actual;
+
+            //Act
+            numberList.Add(firstNumber);
+            numberList.Add(secondNumber);
+            numberList.Add(thirdNumber);
+            numberList.Add(fourthNumber);
+            numberList.Add(fifthNumber);
+            numberList.Remove(secondNumber);
+            numberList.Remove(fourthNumber);
+            actual = numberList.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Remove_PositiveAndNegativeIntegers_CapacitySix()
         {
             //Arrange
             CustomList<int> numberList = new CustomList<int>();
@@ -236,6 +262,25 @@ namespace CustomListUnitTests
         }
 
         //INDEXER test
+        [TestMethod]
+        public void Add_OneInteger_ZeroIndexValue25()
+        {
+            //Arrange
+            CustomList<int> numberList = new CustomList<int>();
+            int firstNumber = 25;
+            int expected = 25;
+            int actual;
+
+            //Act
+            numberList.Add(firstNumber);
+            actual = numberList[0];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+
+        }
+
+
         [TestMethod]
         public void Add_FourNumbers_AtTwoIndexValueSix()
         {
