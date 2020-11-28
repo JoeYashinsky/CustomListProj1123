@@ -86,8 +86,22 @@ namespace CustomListClass
                 }
             }
             return newString;
-
         }
+
+        public static CustomList<T> operator+ (CustomList<T> listA, CustomList<T> listB)
+        {
+            CustomList<T> overloadResult = new CustomList<T>();
+            for (int i = 0; i < listA.count; i++)
+            {
+                overloadResult.Add(listA[i]);
+            }
+            for (int i = 0; i < listB.count; i++)
+            {
+                overloadResult.Add(listB[i]);
+            }
+            return overloadResult;
+        }
+
 
         //public CustomList<T> Zip(CustomList<T> zipListOne, CustomList<T> zipListTwo)
         //{

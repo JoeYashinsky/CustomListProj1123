@@ -431,23 +431,23 @@ namespace CustomListUnitTests
         }
 
 
-
-        //OverloadPlusOperator test
+        //As a developer, I want to be able to overload the + operator so that I can 
+        // add two instances of the custom list together.
         [TestMethod]
-        public void AddOperator_TwoLists_FinalListHasCountSix()
+        public void AddOperator_TwoLists_FinalResult135246()
         {
             //Arrange
             CustomList<int> listOne = new CustomList<int>() { };
             CustomList<int> listTwo = new CustomList<int>() { };
-            CustomList<int> listResult = new CustomList<int>() { };
+            CustomList<int> listResult;
             int firstNumber = 1;
             int secondNumber = 3;
             int thirdNumber = 5;
             int fourthNumber = 2;
             int fifthNumber = 4;
             int sixthNumber = 6;
-            int expected = 6;
-            int actual;
+            string expected = "135246";
+            string actual;
 
             //Act
             listOne.Add(firstNumber);
@@ -458,16 +458,100 @@ namespace CustomListUnitTests
             listTwo.Add(sixthNumber);
 
             listResult = listOne + listTwo;
-            actual = listResult.Count;          //Should read:  1, 3, 5, 2, 4, 6
+            actual = listResult.ToString();          //Should read: 135246
 
             //Assert
             Assert.AreEqual(expected, actual);
         }
 
-        //OverloadMinusOperator test
         [TestMethod]
-        public void MinusOperator_TwoLists_FinalList()
+        public void AddOperator_OnlyZerosAndOnes_FinalResult0011()
         {
+            //Arrange
+            CustomList<int> zeroList = new CustomList<int>();
+            CustomList<int> oneList = new CustomList<int>();
+            CustomList<int> listResult;
+            int firstNumber = 0;
+            int secondNumber = 0;
+            int thirdNumber = 1;
+            int fourthNumber = 1;
+            string expected = "0011";
+            string actual;
+
+            //Act
+            zeroList.Add(firstNumber);
+            zeroList.Add(secondNumber);
+            oneList.Add(thirdNumber);
+            oneList.Add(fourthNumber);
+
+            listResult = zeroList + oneList;
+            actual = listResult.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void AddOperator_OddsAndEvens_FinalResult24683579()
+        {
+            CustomList<int> evenList = new CustomList<int>();
+            CustomList<int> oddList = new CustomList<int>();
+            CustomList<int> listResult;
+            int firstNumber = 2;
+            int secondNumber = 4;
+            int thirdNumber = 6;
+            int fourthNumber = 8;
+            int fifthNumber = 3;
+            int sixththNumber = 5;
+            int seventhNumber = 7;
+            int eighthNumber = 9;
+            string expected = "24683579";
+            string actual;
+
+            //Act
+            evenList.Add(firstNumber);
+            evenList.Add(secondNumber);
+            evenList.Add(thirdNumber);
+            evenList.Add(fourthNumber);
+            oddList.Add(fifthNumber);
+            oddList.Add(sixththNumber);
+            oddList.Add(secondNumber);
+            oddList.Add(eighthNumber);
+
+            listResult = oddList + evenList;
+            actual = listResult.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        
+        //As a developer, I want to be able to overload the - operator so that I can
+        // subtract one instance of a custom list class from another.
+        [TestMethod]
+        public void MinusOperator_TwoLists_FinalResult4Only()
+        {
+            //Arrange
+            CustomList<int> listOne = new CustomList<int>();
+            CustomList<int> listTwo = new CustomList<int>();
+            CustomList<int> listResult;
+            int firstNumber = 3;
+            int secondNumber = 4;
+            int thirdNumber = 3;
+            string expected = "4";
+            string actual;
+
+            //Act
+            listOne.Add(firstNumber);
+            listOne.Add(secondNumber);
+            listTwo.Add(thirdNumber);
+
+            listResult = listOne - listTwo;
+            actual = list.Result.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+
 
         }
 
