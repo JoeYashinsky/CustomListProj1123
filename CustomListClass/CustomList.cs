@@ -27,6 +27,10 @@ namespace CustomListClass
             {
                 return capacity;
             }
+            set
+            {
+                capacity = value;
+            }
         }
 
         public T this[int index]
@@ -34,6 +38,10 @@ namespace CustomListClass
             get
             {
                 return _items[index]; 
+            }
+            set
+            {
+                _items[index] = value;
             }
 
 
