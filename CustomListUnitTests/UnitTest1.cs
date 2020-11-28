@@ -7,7 +7,8 @@ namespace CustomListUnitTests
     [TestClass]
     public class CustomListTest
     {
-        //ADD test
+        //As a developer, I want the ability to add an object to an instance of my custom-built class
+        // by imitating the C# Add() method.
         [TestMethod]
         public void Add_PositiveNumber_CountOfOne()
         {
@@ -123,7 +124,9 @@ namespace CustomListUnitTests
             Assert.AreEqual(expected, actual);
         }
 
-        //REMOVE test
+
+        //As a developer, I want the ability to remove an object to an instance of my custom-built class
+        // by imitating the C# Remove() method.
         [TestMethod]
         public void Remove_PositiveNumber_CountOne()
         {
@@ -261,6 +264,98 @@ namespace CustomListUnitTests
             Assert.AreEqual(expected, actual);
         }
 
+
+        //As a developer, I want to create a C# indexer so that I can make the objects in my list accessible via index.
+        //I want to properly ensure that a user cannot access an out-of-bounds index.
+        [TestMethod]
+        public void Index_OneInteger_ZeroIndexValue25()
+        {
+            //Arrange
+            CustomList<int> numberList = new CustomList<int>();
+            int firstNumber = 25;
+            int expected = 25;
+            int actual;
+
+            //Act
+            numberList.Add(firstNumber);
+            actual = numberList[0];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Index_FourNumbers_AtTwoIndexValueSix()
+        {
+            //Arrange
+            CustomList<int> numberList = new CustomList<int>();
+            int firstNumber = 4;
+            int secondNumber = 5;
+            int thirdNumber = 6;
+            int fourthNumber = 7;
+
+            int expected = 6;
+            int actual;
+
+            //Act
+            numberList.Add(firstNumber);
+            numberList.Add(secondNumber);
+            numberList.Add(thirdNumber);
+            numberList.Add(fourthNumber);
+            actual = numberList[2];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Index_TwoIndex_TwoIndexValueThree()
+        {
+            //Arrange
+            CustomList<int> numberList = new CustomList<int>();
+            int firstNumber = 1;
+            int secondNumber = 5;
+            int thirdNumber = 2;
+            int fourthNumber = 3;
+
+            int expected = 3;
+            int actual;
+
+            //Act
+            numberList.Add(firstNumber);
+            numberList.Add(secondNumber);
+            numberList.Add(thirdNumber);
+            numberList.Add(fourthNumber);
+            numberList.Remove(thirdNumber);
+            actual = numberList[3];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Index_ProperlyEnsureUserCannotAccessOutBoundsIndex_ExceptionThrown()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            int firstNumber = 5;
+            int secondNumber = 15;
+            int thirdNumber = 25;
+
+            int expected = 0;
+            int actual;
+
+            //Act
+            list.Add(firstNumber);
+            list.Add(secondNumber);
+            list.Add(thirdNumber);
+            actual = list[3];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+
         //OverrideToString test
         [TestMethod]
 
@@ -286,106 +381,38 @@ namespace CustomListUnitTests
             Assert.AreEqual(expected, actual);
         }
 
-        //INDEXER test
+
+        //OverloadPlusOperator test
         [TestMethod]
-        public void Add_OneInteger_ZeroIndexValue25()
+        public void AddOperator_TwoLists_FinalListHasCountSix()
         {
             //Arrange
-            CustomList<int> numberList = new CustomList<int>();
-            int firstNumber = 25;
-            int expected = 25;
-            int actual;
-
-            //Act
-            numberList.Add(firstNumber);
-            actual = numberList[0];
-
-            //Assert
-            Assert.AreEqual(expected, actual);
-
-        }
-
-
-        [TestMethod]
-        public void Add_FourNumbers_AtTwoIndexValueSix()
-        {
-            //Arrange
-            CustomList<int> numberList = new CustomList<int>();
-            int firstNumber = 4;
-            int secondNumber = 5;
-            int thirdNumber = 6;
-            int fourthNumber = 7;
-
+            CustomList<int> listOne = new CustomList<int>() { };
+            CustomList<int> listTwo = new CustomList<int>() { };
+            CustomList<int> listResult = new CustomList<int>() { };
+            int firstNumber = 1;
+            int secondNumber = 3;
+            int thirdNumber = 5;
+            int fourthNumber = 2;
+            int fifthNumber = 4;
+            int sixthNumber = 6;
             int expected = 6;
             int actual;
 
             //Act
-            numberList.Add(firstNumber);
-            numberList.Add(secondNumber);
-            numberList.Add(thirdNumber);
-            numberList.Add(fourthNumber);
-            actual = numberList[2];
+            listOne.Add(firstNumber);
+            listOne.Add(secondNumber);
+            listOne.Add(thirdNumber);
+            listTwo.Add(fourthNumber);
+            listTwo.Add(fifthNumber);
+            listTwo.Add(sixthNumber);
+
+            listResult = listOne + listTwo;
+            actual = listResult.Count;          //Should read:  1, 3, 5, 2, 4, 6
 
             //Assert
             Assert.AreEqual(expected, actual);
         }
-
-        [TestMethod]
-        public void Remove_TwoIndex_TwoIndexValueThree()
-        {
-            //Arrange
-            CustomList<int> numberList = new CustomList<int>();
-            int firstNumber = 1;
-            int secondNumber = 5;
-            int thirdNumber = 2;
-            int fourthNumber = 3;
-
-            int expected = 3;
-            int actual;
-
-            //Act
-            numberList.Add(firstNumber);
-            numberList.Add(secondNumber);
-            numberList.Add(thirdNumber);
-            numberList.Add(fourthNumber);
-            numberList.Remove(thirdNumber);
-            actual = numberList[3];
-
-            //Assert
-            Assert.AreEqual(expected, actual);
-        }
-
-        ////OverloadPlusOperator test
-        //[TestMethod]
-        //public void AddOperator_TwoLists_FinalListHasCountSix()
-        //{
-        //    //Arrange
-        //    CustomList<int> listOne = new CustomList<int>() { };
-        //    CustomList<int> listTwo = new CustomList<int>() { };
-        //    CustomList<int> listResult = new CustomList<int>() { };
-        //    int firstNumber = 1;
-        //    int secondNumber = 3;
-        //    int thirdNumber = 5;
-        //    int fourthNumber = 2;
-        //    int fifthNumber = 4;
-        //    int sixthNumber = 6;
-        //    int expected = 6;
-        //    int actual;
-
-        //    //Act
-        //    listOne.Add(firstNumber);
-        //    listOne.Add(secondNumber);
-        //    listOne.Add(thirdNumber);
-        //    listTwo.Add(fourthNumber);
-        //    listTwo.Add(fifthNumber);
-        //    listTwo.Add(sixthNumber);
-
-        //    listResult = listOne + listTwo;
-        //    actual = listResult.Count;          //Should read:  1, 3, 5, 2, 4, 6
-
-        //    //Assert
-        //    Assert.AreEqual(expected, actual);
-        //}
 
         //OverloadMinusOperator test
         [TestMethod]
@@ -394,37 +421,37 @@ namespace CustomListUnitTests
 
         }
 
-        //ZIP Test   
-        //[TestMethod]
-        //public void Zip_TwoCustomLists_ZippedTogetherInFormOfZipper()
-        //{
-        //    //Arrange
-        //    CustomList<int> listOne = new CustomList<int>();
-        //    CustomList<int> listTwo = new CustomList<int>();
-        //    CustomList<int> zipperedList = new CustomList<int>();
-        //    int firstNumber = 1;
-        //    int secondNumber = 3;
-        //    int thirdNumber = 5;
-        //    int fourthNumber = 2;
-        //    int fifthNumber = 4;
-        //    int sixthNumber = 6;
-        //    string expected = "1, 2, 3, 4, 5, 6";
-        //    string actual;
+        //ZIP Test
+        [TestMethod]
+        public void Zip_TwoCustomLists_ZippedTogetherInFormOfZipper()
+        {
+            //Arrange
+            CustomList<int> listOne = new CustomList<int>();
+            CustomList<int> listTwo = new CustomList<int>();
+            CustomList<int> zipperedList = new CustomList<int>();
+            int firstNumber = 1;
+            int secondNumber = 3;
+            int thirdNumber = 5;
+            int fourthNumber = 2;
+            int fifthNumber = 4;
+            int sixthNumber = 6;
+            string expected = "123456";
+            string actual;
 
-        //    //Act
-        //    listOne.Add(firstNumber);
-        //    listOne.Add(secondNumber);
-        //    listOne.Add(thirdNumber);
-        //    listOne.Add(fourthNumber);
-        //    listOne.Add(fifthNumber);
-        //    listOne.Add(sixthNumber);
-        //    zipperedList = zipperedList.Zip(listOne, listTwo);
-        //    actual = zipperedList.ToString();
+            //Act
+            listOne.Add(firstNumber);
+            listOne.Add(secondNumber);
+            listOne.Add(thirdNumber);
+            listOne.Add(fourthNumber);
+            listOne.Add(fifthNumber);
+            listOne.Add(sixthNumber);
+            zipperedList = zipperedList.Zip(listOne, listTwo);
+            actual = zipperedList.ToString();
 
-        //    //Assert
-        //    Assert.AreEqual(expected, actual);
+            //Assert
+            Assert.AreEqual(expected, actual);
 
-        //}
+        }
     }
 }
 
