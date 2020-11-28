@@ -102,6 +102,23 @@ namespace CustomListClass
             return overloadResult;
         }
 
+        public static CustomList<T> operator- (CustomList<T> listA, CustomList<T> listB)
+        {
+            CustomList<T> overloadMinusResult = new CustomList<T>();
+            for (int i = 0; i < listA.count; i++)
+            {
+                for (int j = 0; j < listB.count; j++)
+                {
+                    if (listA[i].Equals(listB[j]))
+                    {
+                        listA.Remove(listA[i]);
+                    }
+                }
+            }
+            return overloadMinusResult;
+
+        }
+
 
         //public CustomList<T> Zip(CustomList<T> zipListOne, CustomList<T> zipListTwo)
         //{
