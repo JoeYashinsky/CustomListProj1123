@@ -69,15 +69,15 @@ namespace CustomListClass
 
         public override string ToString()
         {
-            string showCurrentList = "";
+            string newString = "";
             if (count > 0)
             {
                 for (int i = 0; i < count; i++)
                 {
-                    showCurrentList += _items[i].ToString() + "";
+                    newString += _items[i].ToString() + "";
                 }
             }
-            return showCurrentList;
+            return newString;
 
         }
 

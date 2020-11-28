@@ -349,14 +349,15 @@ namespace CustomListUnitTests
             list.Add(firstNumber);
             list.Add(secondNumber);
             list.Add(thirdNumber);
-            actual = list[3];
+            actual = list[3];  //there is no value at the 3 index. Only at [0] [1] [2].
 
             //Assert
             Assert.AreEqual(expected, actual);
         }
 
 
-        //OverrideToString test
+        //As a developer, I want to be able to override the ToString method that converts the 
+        // contents of the custom list to a string.
         [TestMethod]
 
         public void ToString_ConvertContentsOfCustomListToString_SingleString()
@@ -380,6 +381,55 @@ namespace CustomListUnitTests
             //Assert
             Assert.AreEqual(expected, actual);
         }
+        
+        [TestMethod]
+        public void ToString_ListOfBooleans_AlternatingTrueAndFalse()
+        {
+            //Arrange
+            CustomList<bool> listOfBooleans = new CustomList<bool>();
+            bool firstBool = true;
+            bool secondBool = false;
+            bool thirdBool = true;
+            bool fourthBool = false;
+            bool fifthBool = true;
+            string expected = "truefalsetruefalsetrue";
+            string actual;
+
+            //Act
+            listOfBooleans.Add(firstBool);
+            listOfBooleans.Add(secondBool);
+            listOfBooleans.Add(thirdBool);
+            listOfBooleans.Add(fourthBool);
+            listOfBooleans.Add(fifthBool);
+            actual = listOfBooleans.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ToString_CombiningFourStrings_ExpectOneContinuousString()
+        {
+            //Arrange
+            CustomList<string> singleString = new CustomList<string>();
+            string firstString = "Happy ";
+            string secondString = "Gilmore ";
+            string thirdString = "Billy ";
+            string fourthString = "Madison";
+            string expected = "Happy Gilmore Billy Madison";
+            string actual;
+
+            //Act
+            singleString.Add(firstString);
+            singleString.Add(secondString);
+            singleString.Add(thirdString);
+            singleString.Add(fourthString);
+            actual = singleString.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
 
 
         //OverloadPlusOperator test
