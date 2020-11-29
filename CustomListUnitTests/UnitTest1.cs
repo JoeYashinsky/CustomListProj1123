@@ -392,7 +392,7 @@ namespace CustomListUnitTests
             bool thirdBool = true;
             bool fourthBool = false;
             bool fifthBool = true;
-            string expected = "truefalsetruefalsetrue";
+            string expected = "TrueFalseTrueFalseTrue";
             string actual;
 
             //Act
@@ -503,9 +503,7 @@ namespace CustomListUnitTests
             int fourthNumber = 8;
             int fifthNumber = 3;
             int sixththNumber = 5;
-            int seventhNumber = 7;
-            int eighthNumber = 9;
-            string expected = "24683579";
+            string expected = "352468";
             string actual;
 
             //Act
@@ -515,8 +513,6 @@ namespace CustomListUnitTests
             evenList.Add(fourthNumber);
             oddList.Add(fifthNumber);
             oddList.Add(sixththNumber);
-            oddList.Add(secondNumber);
-            oddList.Add(eighthNumber);
 
             listResult = oddList + evenList;
             actual = listResult.ToString();
@@ -529,7 +525,7 @@ namespace CustomListUnitTests
         //As a developer, I want to be able to overload the - operator so that I can
         // subtract one instance of a custom list class from another.
         [TestMethod]
-        public void MinusOperator_TwoLists_FinalResult4Only()
+        public void MinusOperator_SubtractLists_FinalResult4Only()
         {
             //Arrange
             CustomList<int> listOne = new CustomList<int>();
@@ -539,7 +535,7 @@ namespace CustomListUnitTests
             int secondNumber = 4;
             int thirdNumber = 3;
             string expected = "4";
-            string actual;
+            string actual;      
 
             //Act
             listOne.Add(firstNumber);
@@ -547,13 +543,43 @@ namespace CustomListUnitTests
             listTwo.Add(thirdNumber);
 
             listResult = listOne - listTwo;
-            actual = list.Result.ToString();
+            actual = listResult.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);  //any occurrences (matches) in the 2nd list, remove from first list.
+        }
+
+        [TestMethod]
+        public void MinusOperator_SubtractLists_FinalResultCountThree()
+        {
+            //Arrange
+            CustomList<int> listOne = new CustomList<int>();
+            CustomList<int> listTwo = new CustomList<int>();
+            CustomList<int> listResult;
+            int firstNumber = 100;
+            int secondNumber = 200;
+            int thirdNumber = 300;
+            int fourthNumber = 400;
+            int fifthNumber = 500;
+            int expected = 3;
+            int actual;
+
+            //Act
+            listOne.Add(firstNumber);
+            listOne.Add(secondNumber);
+            listOne.Add(thirdNumber);
+            listOne.Add(fourthNumber);
+            listOne.Add(fifthNumber);
+            listTwo.Add(firstNumber);
+            listTwo.Add(secondNumber);
+
+            listResult = listOne - listTwo;
+            actual = listResult.Count;
 
             //Assert
             Assert.AreEqual(expected, actual);
-
-
         }
+
 
         //ZIP Test
         [TestMethod]

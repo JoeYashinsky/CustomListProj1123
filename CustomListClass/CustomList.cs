@@ -115,9 +115,30 @@ namespace CustomListClass
                     }
                 }
             }
+            overloadMinusResult = listA;
             return overloadMinusResult;
-
         }
+
+        public CustomList<T> Zip(CustomList<T> listA, CustomList<T> listB)
+        {
+            CustomList<T> zippedList = new CustomList<T>();
+
+            for (int i = 0; i < listB.Count; i++)
+            {
+                zippedList.Add(listA[i]);
+                zippedList.Add(listB[i]);
+            }
+            return zippedList;
+        }
+
+        //public IEnumerator GetEnumerator()
+        //{
+        //    for (int i = 0; i < _items.Length; i++)
+        //    {
+        //        yield return _items[i];
+        //    }
+        //}
+
 
 
         //public CustomList<T> Zip(CustomList<T> zipListOne, CustomList<T> zipListTwo)
