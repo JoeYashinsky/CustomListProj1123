@@ -131,25 +131,13 @@ namespace CustomListClass
             return zippedList;
         }
 
-        //public IEnumerator GetEnumerator()
-        //{
-        //    for (int i = 0; i < _items.Length; i++)
-        //    {
-        //        yield return _items[i];
-        //    }
-        //}
-
-
-
-        //public CustomList<T> Zip(CustomList<T> zipListOne, CustomList<T> zipListTwo)
-        //{
-        //    CustomList<T> zippedList = new CustomList<T>(zipListOne + zipListTwo);
-        //    for (int z = 0; z < ; z++)
-        //    {
-        //        zippedList.Add
-        //        }
-
-        //}
+        public IEnumerator GetEnumerator()
+        {
+            for (int i = 0; i < _items.Length; i++)
+            {
+                yield return _items[i];
+            }
+        }
 
 
 

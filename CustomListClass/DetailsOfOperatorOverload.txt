@@ -1,0 +1,50 @@
+﻿As a developer, I want to write documentation in a .txt file that describes the details and functionality of my -operator overload. I want to include details such as
+"syntax," "parameters," "return type," and an example of it being used, with the output.
+(Use format similar to that found at:  https://msdn.microsoft.com/en-us/library/cd666k3e%28v=vs.110%29.aspx?f=255&MSPPError=- 2147217396)
+
+
+Overloading the minus (-) operator in order to subtract one instance of a custom list class from another instance of a custom list class.
+
+Syntax
+public static CustomList<T> operator- (CustomList<T> listA, CustomList<T> listB)
+
+Parameters
+CustomList<T> listA, CustomList<T> listB
+These are the two custom lists that will be utilized in this operation. Checking to see if any occurrences in listA can also be found in listB. If that is the case,
+that item will be removed from the list being subtracted upon (listA).
+
+Return Type
+CustomList<T> overloadMinusResult
+Returned is the end result of overloading the minus operator to subtract listB from listA. The items still remaining after this operation is complete will be added to this CustomList.
+
+
+
+ public static CustomList<T> operator- (CustomList<T> listA, CustomList<T> listB)
+        {
+            CustomList<T> overloadMinusResult = new CustomList<T>();
+            for (int i = 0; i < listA.count; i++)
+            {
+                for (int j = 0; j < listB.count; j++)
+                {
+                    if (listA[i].Equals(listB[j]))
+                    {
+                        listA.Remove(listA[i]);
+                    }
+                }
+            }
+            overloadMinusResult = listA;
+            return overloadMinusResult;
+
+Example being used with output
+
+CustomList<int> listA = newCustomList<int>();
+CustomList<int> listB = newCustomList<int>();
+CustomList<int> overloadMinusResult = newCustomList<int>();
+listA.Add(10);
+listA.Add(20);
+listA.Add(30);
+listB.Add(20);
+listB.Add(30);
+overloadMinusResult = listA - listB;
+
+The output will be 10  (20, 30 both canceled out upon appearing in both listA and listB).
