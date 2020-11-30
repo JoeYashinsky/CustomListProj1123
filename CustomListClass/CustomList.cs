@@ -131,13 +131,13 @@ namespace CustomListClass
             return zippedList;
         }
 
-        public IEnumerator GetEnumerator()
-        {
-            for (int i = 0; i < _items.Length; i++)
-            {
-                yield return _items[i];
-            }
-        }
+        //public IEnumerator GetEnumerator()
+        //{
+        //    for (int i = 0; i < _items.Length; i++)
+        //    {
+        //        yield return _items[i];
+        //    }
+        //}
 
 
 

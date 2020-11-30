@@ -581,13 +581,13 @@ namespace CustomListUnitTests
         }
 
 
-        //ZIP Test
+        //As a developer, I want the ability to zip two custom list class instances together in the form of a zipper.
         [TestMethod]
         public void Zip_TwoCustomLists_ZippedTogetherInFormOfZipper()
         {
             //Arrange
-            CustomList<int> listOne = new CustomList<int>();
-            CustomList<int> listTwo = new CustomList<int>();
+            CustomList<int> odd = new CustomList<int>();
+            CustomList<int> even = new CustomList<int>();
             CustomList<int> zipperedList = new CustomList<int>();
             int firstNumber = 1;
             int secondNumber = 3;
@@ -599,18 +599,43 @@ namespace CustomListUnitTests
             string actual;
 
             //Act
-            listOne.Add(firstNumber);
-            listOne.Add(secondNumber);
-            listOne.Add(thirdNumber);
-            listOne.Add(fourthNumber);
-            listOne.Add(fifthNumber);
-            listOne.Add(sixthNumber);
-            zipperedList = zipperedList.Zip(listOne, listTwo);
+            odd.Add(firstNumber);
+            odd.Add(secondNumber);
+            odd.Add(thirdNumber);
+            even.Add(fourthNumber);
+            even.Add(fifthNumber);
+            even.Add(sixthNumber);
+            zipperedList = zipperedList.Zip(odd, even);
             actual = zipperedList.ToString();
 
             //Assert
             Assert.AreEqual(expected, actual);
+        }
 
+        [TestMethod]
+        public void Zip_NegativeIntegers_ZippedTogetherToFormZipper()
+        {
+            //Arrange
+            CustomList<int> negList1 = new CustomList<int>();
+            CustomList<int> negList2 = new CustomList<int>();
+            CustomList<int> zipperedList = new CustomList<int>();
+            int firstNumber = -4;
+            int secondNumber = -2;
+            int thirdNumber = -3;
+            int fourthNumber = -1;
+            string expected = "-4-3-2-1";
+            string actual;
+
+            //Act
+            negList1.Add(firstNumber);
+            negList1.Add(secondNumber);
+            negList2.Add(thirdNumber);
+            negList2.Add(fourthNumber);
+            zipperedList = zipperedList.Zip(negList1, negList2);
+            actual = zipperedList.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
         }
     }
 }
