@@ -199,13 +199,13 @@ namespace CustomListUnitTests
             numberList.Add(fourthNumber);
             numberList.Add(fifthNumber);
             numberList.Add(sixthNumber);
-            numberList.Add(seventhNumber);
-            numberList.Add(eighthNumber);
-            numberList.Add(ninthNumber);
             numberList.Remove(secondNumber);
             numberList.Remove(fourthNumber);
             numberList.Remove(sixthNumber);
+            numberList.Add(seventhNumber);
+            numberList.Add(eighthNumber);
             numberList.Remove(eighthNumber);
+            numberList.Add(ninthNumber);
             actual = numberList.Capacity;
 
             //Assert
@@ -492,7 +492,7 @@ namespace CustomListUnitTests
         }
 
         [TestMethod]
-        public void AddOperator_OddsAndEvens_FinalResult24683579()
+        public void AddOperator_OddsAndEvens_FinalResult352468()
         {
             CustomList<int> evenList = new CustomList<int>();
             CustomList<int> oddList = new CustomList<int>();
@@ -547,6 +547,30 @@ namespace CustomListUnitTests
 
             //Assert
             Assert.AreEqual(expected, actual);  //any occurrences (matches) in the 2nd list, remove from first list.
+        }
+
+        [TestMethod]
+        public void MinusOperator_SubtractLists_FinalResultCountOne()
+        {
+            //Arrange
+            CustomList<int> listOne = new CustomList<int>();
+            CustomList<int> listTwo = new CustomList<int>();
+            CustomList<int> listResult;
+            int firstNumber = 2;
+            int secondNumber = 4;
+            int thirdNumber = 4;
+            int expected = 1;
+            int actual;
+
+            //Act
+            listOne.Add(firstNumber);
+            listOne.Add(secondNumber);
+            listTwo.Add(thirdNumber);
+
+            listResult = listOne - listTwo;
+            actual = listResult.Count;
+
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -639,61 +663,3 @@ namespace CustomListUnitTests
         }
     }
 }
-
-
-
-//public void Add_PostiveInteger_CountOfOne()
-//{
-//    //arrange
-//    CustomList<int> myList = new CustomList<int>();
-//    int value1 = 5;
-//    int expected = 1;
-//    int actual;
-//    //act
-//    myList.Add(value1);
-//    actual = myList.Count;
-//    //assert
-//    Assert.AreEqual(expected, actual);
-//}
-
-//[TestMethod]
-//public void Add_PostiveIntegers_CountOfFour()
-//{
-//    //arrange
-//    CustomList<int> myList = new CustomList<int>();
-//    int value1 = 5;
-//    int value2 = 5;
-//    int value3 = 5;
-//    int value4 = 5;
-//    int expected = 4;
-//    int actual;
-//    //act
-//    myList.Add(value1);
-//    myList.Add(value2);
-//    myList.Add(value3);
-//    myList.Add(value4);
-//    actual = myList.Count;
-//    //assert
-//    Assert.AreEqual(expected, actual);
-//}
-
-//[TestMethod]
-//public void Add_PostiveIntegers_CapacityOfFour()
-//{
-//    //arrange
-//    CustomList<int> myList = new CustomList<int>();
-//    int value1 = 5;
-//    int value2 = 5;
-//    int value3 = 5;
-//    int value4 = 5;
-//    int expected = 4;
-//    int actual;
-//    //act
-//    myList.Add(value1);
-//    myList.Add(value2);
-//    myList.Add(value3);
-//    myList.Add(value4);
-//    actual = myList.Capacity;
-//    //assert
-//    Assert.AreEqual(expected, actual);
-//}

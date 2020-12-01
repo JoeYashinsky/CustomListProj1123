@@ -131,39 +131,13 @@ namespace CustomListClass
             return zippedList;
         }
 
-        //public IEnumerator GetEnumerator()
-        //{
-        //    for (int i = 0; i < _items.Length; i++)
-        //    {
-        //        yield return _items[i];
-        //    }
-        //}
-
-
-
-
+        public IEnumerator<T> GetEnumerator()
+        {
+            for (int i = 0; i < _items.Length; i++)
+            {
+                yield return _items[i];
+            }
+        }
     }
 }
 
-//public class CustomList<T>
-//{
-//    T[] _items;
-//    public int Count;
-//    public int Capacity;
-
-
-//    public CustomList()
-//    {
-//        Count = 0;
-//        Capacity = 4;
-//        _items = new T[Capacity];
-//    }
-
-
-//    public void Add(T valueToAdd)
-//    {
-//        _items[Count] = valueToAdd;
-//        Count++;
-
-//    }
-//}
