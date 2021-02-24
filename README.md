@@ -1,1 +1,1 @@
-# CustomListProj1123
+The built-in List<T> class is a generic class that acts as a wrapper over the array class. I used Test Driven Development to write valid tests for my methods to pass. This will ensure proper functionality within my application. 
